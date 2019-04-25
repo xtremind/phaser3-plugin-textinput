@@ -11,10 +11,12 @@ var BasePlugin = function (scene)
 
     this.systems = scene.sys;
 
-    if (!scene.sys.settings.isBooted)
+    this.name = "BasePlugin";
+
+    /*if (!scene.sys.settings.isBooted)
     {
         scene.sys.events.once('boot', this.boot, this);
-    }
+    }*/
 };
 
 //  Static function called by the PluginFile Loader.
@@ -40,6 +42,7 @@ BasePlugin.prototype = {
         //  Listening to the following events is entirely optional, although we would recommend cleanly shutting down and destroying at least.
         //  If you don't need any of these events then remove the listeners and the relevant methods too.
 
+        eventEmitter.on('init', this.init, this);
         eventEmitter.on('start', this.start, this);
 
         eventEmitter.on('preupdate', this.preUpdate, this);
@@ -60,6 +63,10 @@ BasePlugin.prototype = {
     test: function (name)
     {
         console.log('BasePlugin says hello ' + name + '!');
+    },
+
+    init: function ()
+    {
     },
 
     //  Called when a Scene is started by the SceneManager. The Scene is now active, visible and running.
