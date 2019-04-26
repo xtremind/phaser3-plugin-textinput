@@ -4,7 +4,8 @@
   "description": "Phaser 3 Plugin Template",
   "main": "src/main.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
